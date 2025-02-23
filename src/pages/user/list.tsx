@@ -2,7 +2,7 @@ import React from 'react'
 
 function List() {
   return (
-    <div>List</div>
+    <div>Listdsadas</div>
   )
 }
 
