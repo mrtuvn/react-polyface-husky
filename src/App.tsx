@@ -1,7 +1,9 @@
+import { RoutesMain } from './routes/routes';
+
 function App() {
   return (
     <>
-     test
+      <RoutesMain />
     </>
   )
 }

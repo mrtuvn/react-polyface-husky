@@ -1,6 +1,13 @@
-function Template2() {
+import React from "react"
+
+function Template2({ children }:  React.PropsWithChildren) {
   return (
-    <div>Template2</div>
+    <div>
+      <h1>Template 2</h1>
+
+      {children}
+
+    </div>
   )
 }
 
