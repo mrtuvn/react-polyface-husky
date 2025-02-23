@@ -8,7 +8,8 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "prepare": "husky"
+    "prepare": "husky",
+    "husky-install": "husky install & npx husky add .husky/pre-commit 'yarn run lint-staged' & npx husky add .husky/commit-msg  'pre-received' "
   },
   "dependencies": {
     "react": "^19.0.0",
