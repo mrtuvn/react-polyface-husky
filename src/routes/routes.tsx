@@ -9,6 +9,7 @@ import { Template1 } from '../layouts/template1';
 // routes
 import AuthRoute from './auth-route';
 import GuestRoute from './guest-route';
+import Spinner from '../components/Spinner';
 
 // page
 const Dashboard = React.lazy(() => import('../pages/dashboard').then(module => ({ default: module.Dashboard })));
@@ -64,7 +65,7 @@ const routesConfig = [
 
 function renderRoutes() {
   return (
-    <Suspense fallback={<>Loading...</>}>
+    <Suspense fallback={<Spinner />}>
       <Routes>
         {routesConfig.map((route, index) => {
           const Component: any = route.component || Fragment;
