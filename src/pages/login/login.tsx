@@ -26,7 +26,7 @@ function Login() {
         method: 'POST',
         data: {
           data: {
-            email: 'tony3@gmail.com' ,
+            email: 'admin@gmail.com' ,
             password: '123456',
           }
         }

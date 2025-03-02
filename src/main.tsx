@@ -12,6 +12,8 @@ import App from './App.tsx'
 import { initRequest } from './services/initRequest.ts'
 
 import { store } from './store'
+import { AppProvider } from './contexts/app-context.tsx';
+import { ThemeProvider } from './contexts/theme-context.tsx';
 
 initRequest();
 
@@ -20,7 +22,11 @@ createRoot(document.getElementById('root')!).render(
     <Provider store={store}>
       <BrowserRouter>
         <ToastContainer />
-        <App />
+        <ThemeProvider>
+          <AppProvider>
+            <App />
+          </AppProvider>
+        </ThemeProvider>
       </BrowserRouter>
     </Provider>
   </StrictMode>,

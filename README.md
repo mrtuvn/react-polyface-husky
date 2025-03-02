@@ -13,9 +13,17 @@
 - error boundary - log error
 - role & permission based route
 
-# Tools
+#### Role
+- role action
+  - create, update, delete -> admin
+  - read -> all role
+- role page
+  - user -> admin
+
+### Tools
 - prettier
 - eslint
 - husky
 - lint-staged
 - conventional commit
+

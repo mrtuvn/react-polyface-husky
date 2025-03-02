@@ -7,6 +7,14 @@ export const PATH = {
   USER_CREATE: '/user/create',
   USER_EDIT: '/user/edit',
   USER_SHOW: '/user/show',
+  ERROR_403: '/error/403'
 }
 
 export const API_BE = 'https://tony-auth-express-vdee-6j0s-fhovok9bu.vercel.app';
+
+export const USER_ROLE = {
+  ADMIN: 'admin',
+  MEMBER: 'member',
+  OPERATOR: 'operator',
+  MANAGER: 'manager'
+}

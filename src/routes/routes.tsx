@@ -1,6 +1,6 @@
 import React, { Fragment, Suspense } from 'react';
 import { Route, Routes } from "react-router-dom"
-import { PATH } from "../config"
+import { PATH, USER_ROLE } from "../config"
 
 // layout
 import { Template1 } from '../layouts/template1';
@@ -10,6 +10,7 @@ import { Template1 } from '../layouts/template1';
 import AuthRoute from './auth-route';
 import GuestRoute from './guest-route';
 import Spinner from '../components/Spinner';
+import RoleRoute from './role-route';
 
 // page
 const Dashboard = React.lazy(() => import('../pages/dashboard').then(module => ({ default: module.Dashboard })));
@@ -19,13 +20,15 @@ const UserCreate = React.lazy(() => import('../pages/user').then(module => ({ de
 const UserList = React.lazy(() => import('../pages/user').then(module => ({ default: module.List })));
 const UserShow = React.lazy(() => import('../pages/user').then(module => ({ default: module.Show })));
 const UserEdit = React.lazy(() => import('../pages/user').then(module => ({ default: module.Edit })));
+const Error403 = React.lazy(() => import('../pages/error/Error403').then(module => ({ default: module.default })));
 
 const routesConfig = [
   {
     path: PATH.ROOT,
     component: Dashboard,
     layout: Template1,
-    guard: AuthRoute
+    guard: AuthRoute,
+    roles: [USER_ROLE.ADMIN, USER_ROLE.MANAGER, USER_ROLE.OPERATOR]
   },
   {
     path: PATH.LOGIN,
@@ -41,26 +44,36 @@ const routesConfig = [
     path: PATH.USER_LIST,
     component: UserList,
     layout: Template1,
-    guard: AuthRoute
+    guard: AuthRoute,
+    roles: [USER_ROLE.ADMIN, USER_ROLE.MANAGER, USER_ROLE.OPERATOR]
   },
   {
     path: PATH.USER_CREATE,
     component: UserCreate,
     layout: Template1,
-    guard: AuthRoute
+    guard: AuthRoute,
+    roles: [USER_ROLE.ADMIN, USER_ROLE.MANAGER, USER_ROLE.OPERATOR]
   },
   {
     path: PATH.USER_SHOW,
     component: UserShow,
     layout: Template1,
-    guard: AuthRoute
+    guard: AuthRoute,
+    roles: [USER_ROLE.ADMIN, USER_ROLE.MANAGER, USER_ROLE.OPERATOR, USER_ROLE.MEMBER]
   },
   {
     path: PATH.USER_EDIT,
     component: UserEdit,
     layout: Template1,
-    guard: AuthRoute
-  }
+    guard: AuthRoute,
+    roles: [USER_ROLE.ADMIN]
+  },
+  {
+    path: PATH.ERROR_403,
+    component: Error403,
+    layout: Template1,
+    guard: AuthRoute,
+  },
 ]
 
 function renderRoutes() {
@@ -71,6 +84,8 @@ function renderRoutes() {
           const Component: any = route.component || Fragment;
           const Layout: any = route.layout || Fragment;
           const Authenticate: any = route.guard || Fragment;
+          const roles = route.roles;
+
           return (
             <Route 
               key={`routes-${index}`}
@@ -78,7 +93,9 @@ function renderRoutes() {
               element={
                 <Authenticate>
                   <Layout>
-                    <Component />
+                    <RoleRoute roles={roles}>
+                      <Component />
+                    </RoleRoute>
                   </Layout>
                 </Authenticate>
               } 

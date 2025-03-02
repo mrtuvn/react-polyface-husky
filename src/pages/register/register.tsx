@@ -15,10 +15,10 @@ function Register() {
         data: {
           data: {
             avatar: '',
-            firstName: 'Tony' ,
-            lastName:'Nguyen',
-            email: 'tony3@gmail.com',
-            role: 'member',
+            firstName: 'admin' ,
+            lastName:'admin',
+            email: 'admin@gmail.com',
+            role: 'admin',
             password: '123456',
           }
         }
