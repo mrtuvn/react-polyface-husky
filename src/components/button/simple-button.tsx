@@ -1,6 +1,7 @@
 interface SimpleButtonProps {
   buttonText: string,
-  className?: string
+  className?: string,
+  onClick?: () => void
 }
 
 function SimpleButton({ buttonText, className, ...restProps }: SimpleButtonProps) {
