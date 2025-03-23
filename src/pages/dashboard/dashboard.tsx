@@ -14,7 +14,7 @@ function Dashboard() {
   return (
     <>
       <BoxCard>
-        Dashboard
+        <div className="titleDashboard">Dashboard</div>
         <SimpleButton 
           buttonText="Test Error"
           onClick={() => setUser({})}

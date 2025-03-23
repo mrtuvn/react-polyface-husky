@@ -6,6 +6,7 @@ import { Provider } from 'react-redux'
 
 // styles
 import './index.css'
+import './common.css'
 
 import App from './App.tsx'
 
